@@ -1,0 +1,117 @@
+<div [@routerTransition]>
+    <div class="content d-flex flex-column flex-column-fluid">
+
+        <sub-header [title]="'SecutitySruvey' | localize" [description]="'SecuritySurveyHeaderInfo' | localize">
+
+            <div role="actions">
+
+                <div class="btn-group" dropdown placement="button right">
+                    <button id="dropdownButtonExcelOperations" dropdownToggle type="button" class="btn btn-outline btn-outline-success btn-active-light-success dropdown-toggle me-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenuExcelOperations">
+                        <i class="far fa-file-excel btn-md-icon"></i>
+                        <span class="d-none d-md-inline-block">{{ 'ExcelOperations' | localize }}</span>
+                    </button>
+
+                    <ul id="dropdownMenuExcelOperations" class="dropdown-menu dropdown-menu-right dropdown-excel-operations" role="menu" *dropdownMenu aria-labelledby="dropdownButtonExcelOperations" style="width: 250px;">
+                        
+                        <li role="menuitem">
+                            <a href="javascript:;" class="no-padding">
+                                <span class="fileinput-button">
+                                    <p-fileUpload
+                                        #ExcelFileUpload
+                                        customUpload="true"
+                                        name="ExcelFileUpload"
+                                        maxFileSize="10000000"
+                                        auto="auto"
+                                        accept=".csv,.xls,.xlsx"
+                                        (uploadHandler)="uploadExcel($event)"
+                                        (onError)="onUploadExcelError()"
+                                        chooseLabel="{{ 'ImportFromExcel' | localize }}">
+                                    </p-fileUpload>
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                
+            </div>
+        </sub-header>
+
+        <div [class]="containerClass">
+            <div class="card card-custom gutter-b">
+                <div class="card-body">
+
+                    <div class="row align-items-center">
+
+                        <div class="mb-5">
+                            <span class="me-2">Modelo de Planilha Excel com questões:</span>
+                            <i class="fas fa-arrow-right me-2"></i>
+                            <a href="/assets/sampleFiles/Import-ISO-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
+                                <span class="badge bg-dark text-white" style="width: 100px;">
+                                    ISO
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="mb-5">
+                            <span class="me-2">Modelo de Planilha Excel com questões:</span>
+                            <i class="fas fa-arrow-right me-2"></i>
+                            <a href="/assets/sampleFiles/Import-MITRE-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
+                                <span class="badge bg-info text-white" style="width: 100px;">
+                                    MITRE
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="mb-5">
+                            <span class="me-2">Modelo de Planilha Excel com questões:</span>
+                            <i class="fas fa-arrow-right me-2"></i>
+                            <a href="/assets/sampleFiles/Import-NIST-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
+                                <span class="badge bg-warning text-white" style="width: 100px;">
+                                    NIST
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="mb-5">
+                            <span class="me-2">Modelo de Planilha Excel com questões:</span>
+                            <i class="fas fa-arrow-right me-2"></i>
+                            <a href="/assets/sampleFiles/Import-CISTOISO-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
+                                <span class="badge bg-primary text-white" style="width: 100px;">
+                                    CIS TO ISO
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="mb-5">
+                            <span class="me-2">Modelo de Planilha Excel com questões:</span>
+                            <i class="fas fa-arrow-right me-2"></i>
+                            <a href="/assets/sampleFiles/Import-CISTOMITRE-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
+                                <span class="badge bg-danger text-white" style="width: 100px;">
+                                    CIS TO MITRE
+                                </span>
+                            </a>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <span class="me-2">Modelo de Planilha Excel com questões:</span>
+                            <i class="fas fa-arrow-right me-2"></i>
+                            <a href="/assets/sampleFiles/Import-CISTONIST-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
+                                <span class="badge bg-success text-white" style="width: 100px;">
+                                    CIS TO NIST
+                                </span>
+                            </a>
+                        </div>
+
+                       <p class="text-muted p-5">
+                            Obtenha (download) a(s) planilha(s) com as questões a serem respondidas clickando nos link's acima; após responder
+                            as questões, envie (upload) o(s) arquivo(s), utilizando o botão "Importar do Excel" localizado no canto superior direito nesta página.
+                       </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
