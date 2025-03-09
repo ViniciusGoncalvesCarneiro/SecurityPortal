@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GumAdvisor.SystemSurvey.Importing
 {
-    public class IsoExcelDataReader : NpoiExcelImporterBase<ImportIsoDto>, IIsoExcelDataReader
+    public class IsoQuestionExcelDataReader : NpoiExcelImporterBase<ImportIsoDto>, IIsoQuestionExcelDataReader
     {
         public List<ImportIsoDto> GetIsoFromExcel(byte[] fileBytes)
         {

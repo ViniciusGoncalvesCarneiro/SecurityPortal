@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GumAdvisor.SystemSurvey.Importing
 {
-    public class NistExcelDataReader : NpoiExcelImporterBase<ImportNistDto>, INistExcelDataReader
+    public class NistQuestionExcelDataReader : NpoiExcelImporterBase<ImportNistDto>, INistQuestionExcelDataReader
     {
         public List<ImportNistDto> GetNistFromExcel(byte[] fileBytes)
         {

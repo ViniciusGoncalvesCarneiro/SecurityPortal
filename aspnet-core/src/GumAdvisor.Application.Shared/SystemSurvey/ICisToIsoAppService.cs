@@ -7,6 +7,6 @@ namespace GumAdvisor.SystemSurvey
 {
     public interface ICisToIsoAppService : IApplicationService
     {
-        Task<PagedResultDto<GetCisToIsoForViewDto>> GetAll(/*GetAllAddressesInput input*/);
+        Task<PagedResultDto<GetCisToIsoForViewDto>> GetAll(GetAllCisToIsotInput input);
     }
 }

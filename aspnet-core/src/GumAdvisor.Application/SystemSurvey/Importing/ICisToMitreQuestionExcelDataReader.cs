@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace GumAdvisor.SystemSurvey.Importing
 {
-    public interface INistExcelDataReader : ITransientDependency
+    public interface ICisToMitreQuestionExcelDataReader : ITransientDependency
     {
-        List<ImportNistDto> GetNistFromExcel(byte[] fileBytes);
+        List<ImportCisToMitreDto> GetCisToMitreFromExcel(byte[] fileBytes);
     }
 }

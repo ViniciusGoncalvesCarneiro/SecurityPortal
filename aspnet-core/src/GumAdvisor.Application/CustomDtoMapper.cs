@@ -43,7 +43,6 @@ using GumAdvisor.SystemSurvey;
 using GumAdvisor.SystemSurvey.Dto;
 using GumAdvisor.WebHooks.Dto;
 using IdentityServer4.Extensions;
-using Stripe;
 
 namespace GumAdvisor
 {

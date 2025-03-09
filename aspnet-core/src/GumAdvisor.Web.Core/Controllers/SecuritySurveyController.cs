@@ -53,9 +53,7 @@ namespace GumAdvisor.Web.Controllers
                         _systemSurveyManager.GetNistImportedFile(fileBytes);
                         break;
                     case "CISTOISO":
-                        // Falhou
-                        //_systemSurveyManager.GetCisToIsoImportedFile(fileBytes);
-                        // Falhou
+                        _systemSurveyManager.GetCisToIsoImportedFile(fileBytes);
                         break;
                     case "CISTOMITRE":
                         _systemSurveyManager.GetCisToMitreImportedFile(fileBytes);

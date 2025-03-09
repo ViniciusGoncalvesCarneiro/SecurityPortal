@@ -8,75 +8,152 @@ namespace GumAdvisor.SystemSurvey.Manager
 {
     public class SystemSurveyManager : GumAdvisorDomainServiceBase, ISystemSurveyManager
     {
-        private readonly IIsoExcelDataReader _isoExcelDataReader;
-        private readonly IMitreExcelDataReader _mitreExcelDataReader;
-        private readonly INistExcelDataReader _nistExcelDataReader;
+        private readonly IIsoQuestionExcelDataReader _isoQuestionExcelDataReader;
+        private readonly IMitreQuestionExcelDataReader _mitreQuestionExcelDataReader;
+        private readonly INistQuestionExcelDataReader _nistQuestionExcelDataReader;
 
         // Falhou
         //private readonly ICisToIsoExcelDataReader _cisToIsoExcelDataReader;
+        private readonly ICisToIsoQuestionExcelDataReader _cisToIsoQuestionExcelDataReader;
         // Falhou
 
-        private readonly ICisToMitreExcelDataReader _cisToMitreExcelDataReader;
-        private readonly ICisToNistExcelDataReader _cisToNistExcelDataReader;
+        private readonly ICisToMitreQuestionExcelDataReader _cisToMitreQuestionExcelDataReader;
+        private readonly ICisToNistQuestionExcelDataReader _cisToNistQuestionExcelDataReader;
 
         private IDbContextProvider<GumAdvisorDbContext> _contextProvider;
 
         public SystemSurveyManager(
 
-            IIsoExcelDataReader isoExcelDataReader,
-            IMitreExcelDataReader mitreExcelDataReader,
-            INistExcelDataReader nistExcelDataReader,
+            IIsoQuestionExcelDataReader isoQuestionExcelDataReader,
+            IMitreQuestionExcelDataReader mitreQuestionExcelDataReader,
+            INistQuestionExcelDataReader nistQuestionExcelDataReader,
 
             // Falhou
-            //ICisToIsoExcelDataReader cisToIsoExcelDataReader,
+            ICisToIsoQuestionExcelDataReader cisToIsoQuestionExcelDataReader,
             // Falhou
 
-            ICisToMitreExcelDataReader cisToMitreExcelDataReader,
-            ICisToNistExcelDataReader cisToNistExcelDataReader,
+            ICisToMitreQuestionExcelDataReader cisToMitreQuestionExcelDataReader,
+            ICisToNistQuestionExcelDataReader cisToNistQuestionExcelDataReader,
 
             IDbContextProvider<GumAdvisorDbContext> contextProvider
 
             )
         {
-            _isoExcelDataReader = isoExcelDataReader;
-            _mitreExcelDataReader = mitreExcelDataReader;
-            _nistExcelDataReader = nistExcelDataReader;
-
+            _isoQuestionExcelDataReader = isoQuestionExcelDataReader;
+            _mitreQuestionExcelDataReader = mitreQuestionExcelDataReader;
+            _nistQuestionExcelDataReader = nistQuestionExcelDataReader;
             // Falhou
-            //_cisToIsoExcelDataReader = cisToIsoExcelDataReader;
+            _cisToIsoQuestionExcelDataReader = cisToIsoQuestionExcelDataReader;
             // Falhou
-
-            _cisToMitreExcelDataReader = cisToMitreExcelDataReader;
-            _cisToNistExcelDataReader = cisToNistExcelDataReader;
+            _cisToMitreQuestionExcelDataReader = cisToMitreQuestionExcelDataReader;
+            _cisToNistQuestionExcelDataReader = cisToNistQuestionExcelDataReader;
 
             _contextProvider = contextProvider;
         }
 
-        public void GetCisToMitreImportedFile(byte[] fileBytes)
+        #region [ Get Data Drom Excell ]
+        public bool GetCisToMitreImportedFile(byte[] fileBytes)
         {
-            SaveCisToMitreToDb(_cisToMitreExcelDataReader.GetCisToMitreFromExcel(fileBytes));
+            bool success = false;
+            try
+            {
+                var result = _cisToMitreQuestionExcelDataReader.GetCisToMitreFromExcel(fileBytes);
+                SaveCisToMitreToDb(result);
+                success = true;
+            }
+            catch (System.Exception)
+            {
+                success = false;
+            }
+            return success;
+
         }
 
-        public void GetCisToNistImportedFile(byte[] fileBytes)
+        public bool GetCisToNistImportedFile(byte[] fileBytes)
         {
-            SaveCisToNistToDb(_cisToNistExcelDataReader.GetCisToNistFromExcel(fileBytes));
+            bool success = false;
+            try
+            {
+                var result = _cisToNistQuestionExcelDataReader.GetCisToNistFromExcel(fileBytes);
+                SaveCisToNistToDb(result);
+                success = true;
+            }
+            catch (System.Exception)
+            {
+                success = false;
+            }
+            return success;
         }
 
-        public void GetIsoFromImportedFile(byte[] fileBytes)
+        public bool GetIsoFromImportedFile(byte[] fileBytes)
         {
-            SaveIsoToDb(_isoExcelDataReader.GetIsoFromExcel(fileBytes));
+            bool success = false;
+            try
+            {
+                var result = _isoQuestionExcelDataReader.GetIsoFromExcel(fileBytes);
+                SaveIsoToDb(result);
+                success = true;
+            }
+            catch (System.Exception)
+            {
+                success = false;
+            }
+            return success;
+
         }
 
-        public void GetMitreImportedFile(byte[] fileBytes)
+        public bool GetMitreImportedFile(byte[] fileBytes)
         {
-            SaveMitreToDb(_mitreExcelDataReader.GetMitreFromExcel(fileBytes));
+            bool success = false;
+            try
+            {
+                var result = _mitreQuestionExcelDataReader.GetMitreFromExcel(fileBytes);
+                SaveMitreToDb(result);
+                success = true;
+            }
+            catch (System.Exception)
+            {
+                success = false;
+            }
+            return success;
+
         }
 
-        public void GetNistImportedFile(byte[] fileBytes)
+        public bool GetNistImportedFile(byte[] fileBytes)
         {
-            SaveNistToDb(_nistExcelDataReader.GetNistFromExcel(fileBytes));
-        }
+            bool success = false;
+            try
+            {
+                var result = _nistQuestionExcelDataReader.GetNistFromExcel(fileBytes);
+                SaveNistToDb(result);
+                success = true;
+            }
+            catch (System.Exception)
+            {
+                success = false;
+            }
+            return success;
 
+        }
+        public bool GetCisToIsoImportedFile(byte[] fileBytes)
+        {
+            bool success = false;
+            try
+            {
+                var result = _cisToIsoQuestionExcelDataReader.GetCisToIsoFromExcel(fileBytes);
+                SaveCisToIsoToDb(result);
+                success = true;
+            }
+            catch (System.Exception)
+            {
+                success = false;
+            }
+            return success;
+
+        }
+        #endregion
+
+        #region [ - Save Data to DB - ]
         protected void SaveIsoToDb(List<ImportIsoDto> importIso)
         {
             var ctx = _contextProvider.GetDbContext();
@@ -172,5 +249,26 @@ namespace GumAdvisor.SystemSurvey.Manager
             }
             ctx.SaveChanges();
         }
+
+        protected void SaveCisToIsoToDb(List<ImportCisToIsoDto> importCisToIso)
+        {
+            var ctx = _contextProvider.GetDbContext();
+            foreach (ImportCisToIsoDto item in importCisToIso)
+            {
+                var cisToIso = new CisToIso();
+                cisToIso.TenantId = (int)ctx.AbpSession.TenantId;
+                cisToIso.CISControl = item.CIS_Control;
+                cisToIso.CISSafeguard = item.CIS_Safeguard;
+                cisToIso.AssetType = item.Asset_Type;
+                cisToIso.SecurityFunction = item.Security_Function;
+                cisToIso.Title = item.Title;
+                cisToIso.Description = item.Description;
+                cisToIso.Relationship = item.Relationship;
+                cisToIso.ISOIEC270012022 = item.ISO_IEC_27001_2022;
+                ctx.CisToIso.Add(cisToIso);
+            }
+        }
+        #endregion
+
     }
 }

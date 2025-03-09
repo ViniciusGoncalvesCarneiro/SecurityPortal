@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GumAdvisor.SystemSurvey.Importing
 {
-    public class CisToMitreExcelDataReader : NpoiExcelImporterBase<ImportCisToMitreDto>, ICisToMitreExcelDataReader
+    public class CisToMitreQuestionExcelDataReader : NpoiExcelImporterBase<ImportCisToMitreDto>, ICisToMitreQuestionExcelDataReader
     {
         public List<ImportCisToMitreDto> GetCisToMitreFromExcel(byte[] fileBytes)
         {

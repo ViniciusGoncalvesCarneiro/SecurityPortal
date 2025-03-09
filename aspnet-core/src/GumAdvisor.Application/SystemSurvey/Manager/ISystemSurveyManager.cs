@@ -5,19 +5,19 @@ namespace GumAdvisor.SystemSurvey.Manager
     public interface ISystemSurveyManager : IDomainService
     {
         // OK
-        void GetIsoFromImportedFile(byte[] fileBytes);
+        bool GetIsoFromImportedFile(byte[] fileBytes);
         // OK
-        void GetMitreImportedFile(byte[] fileBytes);
+        bool GetMitreImportedFile(byte[] fileBytes);
         // OK
-        void GetNistImportedFile(byte[] fileBytes);
+        bool GetNistImportedFile(byte[] fileBytes);
 
         // Falhou
-        //void GetCisToIsoImportedFile(byte[] fileBytes);
+        bool GetCisToIsoImportedFile(byte[] fileBytes);
         // Falhou
 
         // OK
-        void GetCisToMitreImportedFile(byte[] fileBytes);
+        bool GetCisToMitreImportedFile(byte[] fileBytes);
         // OK
-        void GetCisToNistImportedFile(byte[] fileBytes);
+        bool GetCisToNistImportedFile(byte[] fileBytes);
     }
 }

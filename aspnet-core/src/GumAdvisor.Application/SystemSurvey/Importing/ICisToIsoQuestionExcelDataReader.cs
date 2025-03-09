@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace GumAdvisor.SystemSurvey.Importing
 {
-    public interface ICisToIsoExcelDataReader : ITransientDependency
+    public interface ICisToIsoQuestionExcelDataReader : ITransientDependency
     {
         // Big, ver isso com calma...
-        //List<ImportCisToIsoDto> GetCisToIsoFromExcel(byte[] fileBytes);
+        List<ImportCisToIsoDto> GetCisToIsoFromExcel(byte[] fileBytes);
     }
 }

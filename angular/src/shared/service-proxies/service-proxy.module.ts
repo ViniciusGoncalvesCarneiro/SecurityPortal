@@ -11,6 +11,7 @@ import { ZeroTemplateHttpConfigurationService } from './zero-template-http-confi
         ApiServiceProxies.IsoServiceProxy,
         ApiServiceProxies.MitreServiceProxy,
         ApiServiceProxies.NistServiceProxy,
+        ApiServiceProxies.CisToIsoServiceProxy,
         ApiServiceProxies.CisToMitreServiceProxy,
         ApiServiceProxies.CisToNistServiceProxy,
 
