@@ -1,0 +1,48 @@
+<div bsModal #createOrEditModal="bs-modal" (onShown)="onShown()" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <form *ngIf="active" #powerBIReportForm="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="powerBIReport.id">{{ l('EditPowerBIReport') }}</span>
+                        <span *ngIf="!powerBIReport.id">{{ l('CreateNewPowerBIReport') }}</span>
+                    </h4>
+
+                    <button type="button" class="btn-close" (click)="close()" aria-label="Close" [disabled]="saving"></button>
+                </div>
+
+                <div class="modal-body">
+                    
+                    <div class="my-3">
+                        <label class="form-label" for="PowerBIReport_GroupId">{{ l('GroupId') }} *</label>
+                        <input type="text" #PowerBIReport_GroupId="ngModel" id="PowerBIReport_GroupId" class="form-control" name="GroupId" [(ngModel)]="powerBIReport.groupId" minlength="1" maxlength="40" required />
+                        <validation-messages [formCtrl]="PowerBIReport_GroupId"></validation-messages>
+                    </div>
+                    <div class="my-3">
+                        <label class="form-label" for="PowerBIReport_ReportId">{{ l('ReportId') }} *</label>
+                        <input type="text" #PowerBIReport_ReportId="ngModel" id="PowerBIReport_ReportId" class="form-control" name="ReportId" [(ngModel)]="powerBIReport.reportId" minlength="1" maxlength="40" required />
+                        <validation-messages [formCtrl]="PowerBIReport_ReportId"></validation-messages>
+                    </div>
+                    <div class="my-3">
+                        <label class="form-label" for="PowerBIReport_Description">{{ l('ReportDescription') }} *</label>
+                        <input type="text" #PowerBIReport_Description="ngModel" id="PowerBIReport_Description" class="form-control" name="Description" [(ngModel)]="powerBIReport.description" minlength="1" maxlength="40" required />
+                        <validation-messages [formCtrl]="PowerBIReport_Description"></validation-messages>
+                    </div>
+
+                </div>
+                
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()"> {{ l('Cancel') }}</button>
+                    <button type="submit" class="btn btn-primary blue" [disabled]="!powerBIReportForm.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">
+                        <i class="fa fa-save"></i>
+                        <span>{{ l('Save') }}</span>
+                    </button>
+                </div>
+            </form>
+            
+
+        </div>
+    </div>
+</div>

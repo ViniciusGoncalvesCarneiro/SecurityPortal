@@ -7,45 +7,46 @@ import { RouterModule } from '@angular/router';
             {
                 path: '',
                 children: [
-
-                    // Não esquecer as permissions
+                    {
+                        path: 'power-bi-reports',
+                        loadChildren: () => import('./power-bi-reports/power-bi-report.module').then(m => m.PowerBiReportModule),
+                        data: { permission: 'Pages.PowerBIReports' }
+                    },
                     {
                         path: 'security-survey/questions',
                         loadChildren: () => import('./security-survey/questions/question.module').then(m => m.QuestionModule),
-                        data: { permission: '' }
+                        data: { permission: 'Pages.Questions' }
                     },
                     {
                         path: 'security-survey/queries/cis-to-iso',
                         loadChildren: () => import('./security-survey/queries/cis-to-iso/cis-to-iso.module').then(m => m.CisToIsoModule),
-                        data: { permission: '' }
+                        data: { permission: 'Pages.CisToIso' }
                     },
                     {
                         path: 'security-survey/queries/cis-to-mitre',
                         loadChildren: () => import('./security-survey/queries/cis-to-mitre/cis-to-mitre.module').then(m => m.CisToMitreModule),
-                        data: { permission: '' }
+                        data: { permission: 'Pages.CisToMitre' }
                     },
                     {
                         path: 'security-survey/queries/cis-to-nist',
                         loadChildren: () => import('./security-survey/queries/cis-to-nist/cis-to-nist.module').then(m => m.CisToNistModule),
-                        data: { permission: '' }
+                        data: { permission: 'Pages.CisToNist' }
                     },
                     {
                         path: 'security-survey/queries/iso',
                         loadChildren: () => import('./security-survey/queries/iso/iso.module').then(m => m.IsoModule),
-                        data: { permission: '' }
+                        data: { permission: 'Pages.Iso' }
                     },
                     {
                         path: 'security-survey/queries/mitre',
                         loadChildren: () => import('./security-survey/queries/mitre/mitre.module').then(m => m.MitreModule),
-                        data: { permission: '' }
+                        data: { permission: 'Pages.Mitre' }
                     },
                     {
                         path: 'security-survey/queries/nist',
                         loadChildren: () => import('./security-survey/queries/nist/nist.module').then(m => m.NistModule),
-                        data: { permission: '' }
+                        data: { permission: 'Pages.Nist' }
                     },
-                    // Não esquecer as permissions
-
                     {
                         path: 'dashboard',
                         loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
@@ -57,6 +58,9 @@ import { RouterModule } from '@angular/router';
             },
         ]),
     ],
-    exports: [RouterModule],
+    exports: [
+        RouterModule
+    ],
 })
-export class MainRoutingModule {}
+
+export class MainRoutingModule { }

@@ -1,7 +1,9 @@
 ﻿using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using GumAdvisor.Authorization;
 using GumAdvisor.SystemSurvey.Dto;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace GumAdvisor.SystemSurvey
 {
-    //[AbpAuthorize(AppPermissions.Pages_Addresses)]
+    [AbpAuthorize(AppPermissions.Pages_Iso)]
     public class IsoAppService : GumAdvisorAppServiceBase, IIsoAppService
     {
         private readonly IRepository<Iso, Guid> _isoRepository;
@@ -45,11 +47,8 @@ namespace GumAdvisor.SystemSurvey
                       };
 
             var totalCount = await filteredIso.CountAsync();
-
             var dbList = await iso.ToListAsync();
-
             var results = new List<GetIsoForViewDto>();
-
             foreach (var o in dbList)
             {
                 var res = new GetIsoForViewDto()
@@ -68,8 +67,10 @@ namespace GumAdvisor.SystemSurvey
                 results.Add(res);
             }
 
-            return new PagedResultDto<GetIsoForViewDto>(totalCount, results);
-
+            return new PagedResultDto<GetIsoForViewDto>(
+                totalCount, 
+                results
+            );
         }
     }
 }

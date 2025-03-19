@@ -9,6 +9,7 @@ using GumAdvisor.Friendships;
 using GumAdvisor.MultiTenancy;
 using GumAdvisor.MultiTenancy.Accounting;
 using GumAdvisor.MultiTenancy.Payments;
+using GumAdvisor.PowerBIReports;
 using GumAdvisor.Storage;
 using GumAdvisor.SystemSurvey;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ namespace GumAdvisor.EntityFrameworkCore
 {
     public class GumAdvisorDbContext : AbpZeroDbContext<Tenant, Role, User, GumAdvisorDbContext>, IAbpPersistedGrantDbContext
     {
+        public virtual DbSet<PowerBIReport> PowerBIReports { get; set; }
         public virtual DbSet<Iso> Iso { get; set; }
         public virtual DbSet<Mitre> Mitre { get; set; }
         public virtual DbSet<Nist> Nist { get; set; }
@@ -46,6 +48,7 @@ namespace GumAdvisor.EntityFrameworkCore
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<PowerBIReport>(b => { b.HasIndex(e => new { e.TenantId }); });
             modelBuilder.Entity<Iso>(b => { b.HasIndex(e => new { e.TenantId }); });
             modelBuilder.Entity<Mitre>(b => { b.HasIndex(e => new { e.TenantId }); });
             modelBuilder.Entity<Nist>(b => { b.HasIndex(e => new { e.TenantId }); });

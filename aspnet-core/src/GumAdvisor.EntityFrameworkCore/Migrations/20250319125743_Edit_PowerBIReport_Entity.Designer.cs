@@ -4,6 +4,7 @@ using GumAdvisor.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GumAdvisor.Migrations
 {
     [DbContext(typeof(GumAdvisorDbContext))]
-    partial class GumAdvisorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250319125743_Edit_PowerBIReport_Entity")]
+    partial class Edit_PowerBIReport_Entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

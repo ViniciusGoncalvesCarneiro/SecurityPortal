@@ -21,20 +21,22 @@ export class AppNavigationService {
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
 
             // Big - Start heare
-            new AppMenuItem('PowerBiReports', '', 'flaticon-app', '/app/admin/editions'),
-            
+            new AppMenuItem('Power-Bi-Reports', 'Pages.PowerBIReports', 'flaticon-app', '/app/main/power-bi-reports'),
+
             new AppMenuItem('SecuritySurvey', '', 'flaticon-app', '', [],
                 [
-                    new AppMenuItem('Questions', '', 'flaticon-map', '/app/main/security-survey/questions'),
+                    new AppMenuItem('Questions', 'Pages.Questions', 'flaticon-map', '/app/main/security-survey/questions'),
+
                     new AppMenuItem('Queries', '', 'flaticon-interface-8', '', [],
                         [
-                            new AppMenuItem('ISO', '', 'flaticon-map', '/app/main/security-survey/queries/iso'),
-                            new AppMenuItem('MITRE', '', 'flaticon-map', '/app/main/security-survey/queries/mitre'),
-                            new AppMenuItem('NIST', '', 'flaticon-map', '/app/main/security-survey/queries/nist'),
-                            new AppMenuItem('CIS-TO-ISO', '', 'flaticon-map', '/app/main/security-survey/queries/cis-to-iso'),
-                            new AppMenuItem('CIS-TO-MITRE', '', 'flaticon-map', '/app/main/security-survey/queries/cis-to-mitre'),
-                            new AppMenuItem('CIS-TO-NIST', '', 'flaticon-map', '/app/main/security-survey/queries/cis-to-nist'),
-                        ]),
+                            new AppMenuItem('ISO', 'Pages.Iso', 'flaticon-map', '/app/main/security-survey/queries/iso'),
+                            new AppMenuItem('MITRE', 'Pages.Mitre', 'flaticon-map', '/app/main/security-survey/queries/mitre'),
+                            new AppMenuItem('NIST', 'Pages.Nist', 'flaticon-map', '/app/main/security-survey/queries/nist'),
+                            new AppMenuItem('CIS-TO-ISO', 'Pages.CisToIso', 'flaticon-map', '/app/main/security-survey/queries/cis-to-iso'),
+                            new AppMenuItem('CIS-TO-MITRE', 'Pages.CisToMitre', 'flaticon-map', '/app/main/security-survey/queries/cis-to-mitre'),
+                            new AppMenuItem('CIS-TO-NIST', 'Pages.CisToNist', 'flaticon-map', '/app/main/security-survey/queries/cis-to-nist'),
+                        ]
+                    ),
                 ]
             ),
             // Big - Start heare
@@ -61,6 +63,7 @@ export class AppNavigationService {
     }
 
     checkChildMenuItemPermission(menuItem): boolean {
+
         for (let i = 0; i < menuItem.items.length; i++) {
             let subMenuItem = menuItem.items[i];
 

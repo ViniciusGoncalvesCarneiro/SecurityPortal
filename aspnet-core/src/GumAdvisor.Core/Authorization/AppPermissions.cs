@@ -10,6 +10,24 @@
 
         public const string Pages = "Pages";
 
+        // ------------------------------------------------------------------------------------------
+        // Big - 19/03/2025
+        public const string Pages_PowerBIReports = "Pages.PowerBIReports";
+        public const string Pages_PowerBIReports_Create = "Pages.PowerBIReports.Create";
+        public const string Pages_PowerBIReports_Edit = "Pages.PowerBIReports.Edit";
+        public const string Pages_PowerBIReports_Delete = "Pages.PowerBIReports.Delete";
+
+        public const string Pages_Questions = "Pages.Questions";
+
+        // Queries
+        public const string Pages_Iso = "Pages.Iso";
+        public const string Pages_Mitre = "Pages.Mitre";
+        public const string Pages_Nist = "Pages.Nist";
+        public const string Pages_CisToIso = "Pages.CisToIso";
+        public const string Pages_CisToMitre = "Pages.CisToMitre";
+        public const string Pages_CisToNist = "Pages.CisToNist";
+        // ------------------------------------------------------------------------------------------
+
         public const string Pages_DemoUiComponents = "Pages.DemoUiComponents";
         public const string Pages_Administration = "Pages.Administration";
 

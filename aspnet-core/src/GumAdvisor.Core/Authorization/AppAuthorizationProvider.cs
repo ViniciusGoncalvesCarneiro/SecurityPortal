@@ -29,6 +29,24 @@ namespace GumAdvisor.Authorization
             //COMMON PERMISSIONS (FOR BOTH OF TENANTS AND HOST)
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
+
+            //--------------------------------------------------------------------------------------------------------------
+            // Big - 19/03/2025
+            var powerBIReport = pages.CreateChildPermission(AppPermissions.Pages_PowerBIReports, L("PowerBIReports"));
+            powerBIReport.CreateChildPermission(AppPermissions.Pages_PowerBIReports_Create, L("CreateNewPowerBIReport"));
+            powerBIReport.CreateChildPermission(AppPermissions.Pages_PowerBIReports_Edit, L("EditPowerBIReport"));
+            powerBIReport.CreateChildPermission(AppPermissions.Pages_PowerBIReports_Delete, L("DeletePowerBIReport"));
+
+            pages.CreateChildPermission(AppPermissions.Pages_Questions, L("Questions"));
+
+            pages.CreateChildPermission(AppPermissions.Pages_Iso, L("Iso"));
+            pages.CreateChildPermission(AppPermissions.Pages_Mitre, L("Mitre"));
+            pages.CreateChildPermission(AppPermissions.Pages_Nist, L("Nist"));
+            pages.CreateChildPermission(AppPermissions.Pages_CisToIso, L("CisToIso"));
+            pages.CreateChildPermission(AppPermissions.Pages_CisToMitre, L("CisToMitre"));
+            pages.CreateChildPermission(AppPermissions.Pages_CisToNist, L("CisToNist"));
+            //--------------------------------------------------------------------------------------------------------------
+
             pages.CreateChildPermission(AppPermissions.Pages_DemoUiComponents, L("DemoUiComponents"));
 
             var administration = pages.CreateChildPermission(AppPermissions.Pages_Administration, L("Administration"));
@@ -53,7 +71,7 @@ namespace GumAdvisor.Authorization
             languages.CreateChildPermission(AppPermissions.Pages_Administration_Languages_Delete, L("DeletingLanguages"), multiTenancySides: _isMultiTenancyEnabled ? MultiTenancySides.Host : MultiTenancySides.Tenant);
             languages.CreateChildPermission(AppPermissions.Pages_Administration_Languages_ChangeTexts, L("ChangingTexts"));
             languages.CreateChildPermission(AppPermissions.Pages_Administration_Languages_ChangeDefaultLanguage, L("ChangeDefaultLanguage"));
-            
+
             administration.CreateChildPermission(AppPermissions.Pages_Administration_AuditLogs, L("AuditLogs"));
 
             var organizationUnits = administration.CreateChildPermission(AppPermissions.Pages_Administration_OrganizationUnits, L("OrganizationUnits"));

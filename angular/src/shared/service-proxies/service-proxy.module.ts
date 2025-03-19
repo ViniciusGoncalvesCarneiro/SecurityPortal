@@ -8,6 +8,7 @@ import { ZeroTemplateHttpConfigurationService } from './zero-template-http-confi
 @NgModule({
     providers: [
 
+        ApiServiceProxies.PowerBIReportServiceProxy,
         ApiServiceProxies.IsoServiceProxy,
         ApiServiceProxies.MitreServiceProxy,
         ApiServiceProxies.NistServiceProxy,
@@ -66,4 +67,4 @@ import { ZeroTemplateHttpConfigurationService } from './zero-template-http-confi
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true },
     ],
 })
-export class ServiceProxyModule {}
+export class ServiceProxyModule { }

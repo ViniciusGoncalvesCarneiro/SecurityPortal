@@ -38,6 +38,8 @@ using GumAdvisor.MultiTenancy.Payments;
 using GumAdvisor.MultiTenancy.Payments.Dto;
 using GumAdvisor.Notifications.Dto;
 using GumAdvisor.Organizations.Dto;
+using GumAdvisor.PowerBIReports;
+using GumAdvisor.PowerBIReports.Dto;
 using GumAdvisor.Sessions.Dto;
 using GumAdvisor.SystemSurvey;
 using GumAdvisor.SystemSurvey.Dto;
@@ -50,6 +52,9 @@ namespace GumAdvisor
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
+            configuration.CreateMap<CreateOrEditPowerBIReportDto, PowerBIReport>().ReverseMap();
+            configuration.CreateMap<PowerBIReportDto, PowerBIReport>().ReverseMap();
+
             // Pesquisa
             configuration.CreateMap<IsoDto, Iso>().ReverseMap();
             configuration.CreateMap<MitreDto, Mitre>().ReverseMap();
