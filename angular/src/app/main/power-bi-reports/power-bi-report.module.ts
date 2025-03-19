@@ -16,8 +16,8 @@ import { PowerBIEmbedModule } from 'powerbi-client-angular';
   imports: [
     AppSharedModule,
     PowerBiReportRoutingModule,
-    AdminSharedModule,
-    PowerBIEmbedModule
+    AdminSharedModule
+    ,PowerBIEmbedModule
   ]
 })
 
