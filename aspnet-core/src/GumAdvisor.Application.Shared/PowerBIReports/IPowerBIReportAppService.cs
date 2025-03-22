@@ -2,6 +2,7 @@
 using Abp.Application.Services.Dto;
 using GumAdvisor.PowerBIReports.Dto;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace GumAdvisor.PowerBIReports
@@ -13,5 +14,7 @@ namespace GumAdvisor.PowerBIReports
         Task<GetPowerBIReportForEditOutput> GetPowerBIReportForEdit(EntityDto<Guid> input);
         Task CreateOrEdit(CreateOrEditPowerBIReportDto input);
         Task Delete(EntityDto<Guid> input);
+
+        Task<string> GetAccessToken();
     }
 }

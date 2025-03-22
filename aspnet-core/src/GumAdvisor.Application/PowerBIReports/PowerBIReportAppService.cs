@@ -5,10 +5,14 @@ using Abp.Linq.Extensions;
 using GumAdvisor.Authorization;
 using GumAdvisor.PowerBIReports.Dto;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace GumAdvisor.PowerBIReports
@@ -134,5 +138,114 @@ namespace GumAdvisor.PowerBIReports
         {
             await _powerBIReportRepository.DeleteAsync(input.Id);
         }
+
+
+        #region [ - Embed PowerBI - ]
+        /*
+        public async Task<EmbedConfig> GetReportEmbedConfigAsync(HttpRequestMessage request, string groupId, string reportId)
+        {
+            var reportDetails = await GetReportDetailsAsync(groupId, reportId);
+
+            var report = new PowerBiReportDetails(
+                reportDetails.id.ToString(),
+                reportDetails.name.ToString(),
+                reportDetails.embedUrl.ToString()
+            );
+
+            var reportEmbedConfig = new EmbedConfig
+            {
+                ReportsDetail = new List<PowerBiReportDetails> { report }
+            };
+
+            var datasetIds = new List<string> { reportDetails.datasetId.ToString() };
+
+            reportEmbedConfig.EmbedToken = await GetEmbedTokenForSingleReportSingleWorkspace(
+                reportId,
+                datasetIds,
+                groupId
+            );
+
+            return reportEmbedConfig;
+        }
+        */
+
+        public async Task<string> GetAccessToken()
+        {
+            var app = PublicClientApplicationBuilder.Create(PowerBIReportConsts.clientId)
+            .WithAuthority(new Uri(PowerBIReportConsts.authority))
+            .Build();
+
+            var scopes = new string[]
+            {
+                PowerBIReportConsts.scope
+            };
+
+            try
+            {
+                var result = await app.AcquireTokenByUsernamePassword(
+                    scopes, 
+                    PowerBIReportConsts.username,
+                    PowerBIReportConsts.password).ExecuteAsync();
+
+                return result.AccessToken;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao adquirir token: {ex.Message}");
+            }
+        }
+
+        /*
+        protected virtual async Task<dynamic> GetReportDetailsAsync(string groupid, string reportid)
+        {
+            string Token = await GetAccessToken();
+
+            HttpClient client = new HttpClient();
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, $"https://api.powerbi.com/v1.0/myorg/groups/{groupid}/reports/{reportid}");
+
+            request.Headers.Add("Authorization", $"Bearer {Token}");
+
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                string errorDetails = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Erro {response.StatusCode}: {errorDetails}");
+            }
+
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            var reportDetails = JsonConvert.DeserializeObject<dynamic>(responseBody);
+
+            return reportDetails;
+        }
+        */
+
+        /*
+        protected virtual async Task<string> GetEmbedTokenForSingleReportSingleWorkspace(string reportId, List<string> datasetIds, string groupId)
+        {
+            var client = new HttpClient();
+
+            string accessToken = await GetAccessToken();
+
+            var request = new HttpRequestMessage(HttpMethod.Post, $"https://api.powerbi.com/v1.0/myorg/groups/{groupId}/reports/{reportId}/GenerateToken");
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            var content = new StringContent("{\"accessLevel\": \"View\"}", Encoding.UTF8, "application/json");
+            request.Content = content;
+
+            var response = await client.SendAsync(request);
+
+            response.EnsureSuccessStatusCode();
+
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            //Console.WriteLine(responseBody);
+
+            return responseBody;
+        }
+        */
+        #endregion
     }
 }

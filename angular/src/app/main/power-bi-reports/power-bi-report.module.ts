@@ -5,7 +5,7 @@ import { CreateOrEditPowerBiReportModalComponent } from './create-or-edit-power-
 import { AppSharedModule } from '@app/shared/app-shared.module';
 import { AdminSharedModule } from '@app/admin/shared/admin-shared.module';
 import { PowerBiReportViewComponent } from './power-bi-report-view.component';
-//import { PowerBIEmbedModule } from 'powerbi-client-angular';
+import { PowerBIEmbedModule } from 'powerbi-client-angular';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,8 @@ import { PowerBiReportViewComponent } from './power-bi-report-view.component';
   imports: [
     AppSharedModule,
     PowerBiReportRoutingModule,
-    AdminSharedModule
-    //,PowerBIEmbedModule
+    AdminSharedModule,
+    PowerBIEmbedModule
   ]
 })
 

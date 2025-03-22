@@ -43,7 +43,7 @@
 
                     <div class="row align-items-center">
 
-                        <div class="mb-5">
+                        <div class="mb-5" *ngIf="permission.isGranted('Pages.Iso.Upload')">
                             <span class="me-2">Modelo de Planilha Excel com questões:</span>
                             <i class="fas fa-arrow-right me-2"></i>
                             <a href="/assets/sampleFiles/Import-ISO-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
@@ -53,7 +53,7 @@
                             </a>
                         </div>
 
-                        <div class="mb-5">
+                        <div class="mb-5" *ngIf="permission.isGranted('Pages.Mitre.Upload')">
                             <span class="me-2">Modelo de Planilha Excel com questões:</span>
                             <i class="fas fa-arrow-right me-2"></i>
                             <a href="/assets/sampleFiles/Import-MITRE-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
@@ -63,7 +63,7 @@
                             </a>
                         </div>
 
-                        <div class="mb-5">
+                        <div class="mb-5" *ngIf="permission.isGranted('Pages.Nist.Upload')">
                             <span class="me-2">Modelo de Planilha Excel com questões:</span>
                             <i class="fas fa-arrow-right me-2"></i>
                             <a href="/assets/sampleFiles/Import-NIST-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
@@ -73,7 +73,7 @@
                             </a>
                         </div>
 
-                        <div class="mb-5">
+                        <div class="mb-5" *ngIf="permission.isGranted('Pages.CisToIso.Upload')">
                             <span class="me-2">Modelo de Planilha Excel com questões:</span>
                             <i class="fas fa-arrow-right me-2"></i>
                             <a href="/assets/sampleFiles/Import-CISTOISO-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
@@ -83,7 +83,7 @@
                             </a>
                         </div>
 
-                        <div class="mb-5">
+                        <div class="mb-5" *ngIf="permission.isGranted('Pages.CisToMitre.Upload')">
                             <span class="me-2">Modelo de Planilha Excel com questões:</span>
                             <i class="fas fa-arrow-right me-2"></i>
                             <a href="/assets/sampleFiles/Import-CISTOMITRE-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">
@@ -93,7 +93,7 @@
                             </a>
                         </div>
                         
-                        <div class="mb-5">
+                        <div class="mb-5" *ngIf="permission.isGranted('Pages.CisToNist.Upload')">
                             <span class="me-2">Modelo de Planilha Excel com questões:</span>
                             <i class="fas fa-arrow-right me-2"></i>
                             <a href="/assets/sampleFiles/Import-CISTONIST-SampleFile.xlsx" tooltip="Click aqui para baixar o arquivo" placement="right">

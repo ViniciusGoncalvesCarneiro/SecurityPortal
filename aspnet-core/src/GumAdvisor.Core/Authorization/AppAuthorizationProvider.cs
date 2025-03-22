@@ -36,15 +36,24 @@ namespace GumAdvisor.Authorization
             powerBIReport.CreateChildPermission(AppPermissions.Pages_PowerBIReports_Create, L("CreateNewPowerBIReport"));
             powerBIReport.CreateChildPermission(AppPermissions.Pages_PowerBIReports_Edit, L("EditPowerBIReport"));
             powerBIReport.CreateChildPermission(AppPermissions.Pages_PowerBIReports_Delete, L("DeletePowerBIReport"));
+            powerBIReport.CreateChildPermission(AppPermissions.Pages_PowerBIReports_View, L("ViewPowerBIReport"));
 
-            pages.CreateChildPermission(AppPermissions.Pages_Questions, L("Questions"));
+            var questions = pages.CreateChildPermission(AppPermissions.Pages_Questions, L("Questions"));
+            questions.CreateChildPermission(AppPermissions.Pages_Iso_Upload, L("IsoUpload"));
+            questions.CreateChildPermission(AppPermissions.Pages_Mitre_Upload, L("MitreUpload"));
+            questions.CreateChildPermission(AppPermissions.Pages_Nist_Upload, L("NistUpload"));
+            questions.CreateChildPermission(AppPermissions.Pages_CisToIso_Upload, L("CisToIsoUpload"));
+            questions.CreateChildPermission(AppPermissions.Pages_CisToMitre_Upload, L("CisToMitreUpload"));
+            questions.CreateChildPermission(AppPermissions.Pages_CisToNist_Upload, L("CisToNistUpload"));
 
-            pages.CreateChildPermission(AppPermissions.Pages_Iso, L("Iso"));
-            pages.CreateChildPermission(AppPermissions.Pages_Mitre, L("Mitre"));
-            pages.CreateChildPermission(AppPermissions.Pages_Nist, L("Nist"));
-            pages.CreateChildPermission(AppPermissions.Pages_CisToIso, L("CisToIso"));
-            pages.CreateChildPermission(AppPermissions.Pages_CisToMitre, L("CisToMitre"));
-            pages.CreateChildPermission(AppPermissions.Pages_CisToNist, L("CisToNist"));
+            // Queries
+            var queries = pages.CreateChildPermission(AppPermissions.Pages_Queries, L("Queries"));
+            queries.CreateChildPermission(AppPermissions.Pages_Queries_Iso, L("QueriesIso"));
+            queries.CreateChildPermission(AppPermissions.Pages_Queries_Mitre, L("QueriesMitre"));
+            queries.CreateChildPermission(AppPermissions.Pages_Queries_Nist, L("QueriesNist"));
+            queries.CreateChildPermission(AppPermissions.Pages_Queries_CisToIso, L("QueriesCisToIso"));
+            queries.CreateChildPermission(AppPermissions.Pages_Queries_CisToMitre, L("QueriesCisToMitre"));
+            queries.CreateChildPermission(AppPermissions.Pages_Queries_CisToNist, L("QueriesCisToNist"));
             //--------------------------------------------------------------------------------------------------------------
 
             pages.CreateChildPermission(AppPermissions.Pages_DemoUiComponents, L("DemoUiComponents"));

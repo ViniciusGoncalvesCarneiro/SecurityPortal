@@ -15,50 +15,54 @@ export class AppNavigationService {
     getMenu(): AppMenu {
 
         return new AppMenu('MainMenu', 'MainMenu', [
-            new AppMenuItem('Dashboard', 'Pages.Administration.Host.Dashboard', 'flaticon-line-graph', '/app/admin/hostDashboard'),
-            new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
+
+            new AppMenuItem('Dashboard', 'Pages.Administration.Host.Dashboard', 'fas fa-chart-line', '/app/admin/hostDashboard'),
+            new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'fas fa-chart-line', '/app/main/dashboard'),
             new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
 
             // Big - Start heare
-            new AppMenuItem('Power-Bi-Reports', 'Pages.PowerBIReports', 'flaticon-app', '/app/main/power-bi-reports'),
-
-            new AppMenuItem('SecuritySurvey', '', 'flaticon-app', '', [],
-                [
-                    new AppMenuItem('Questions', 'Pages.Questions', 'flaticon-map', '/app/main/security-survey/questions'),
-
-                    new AppMenuItem('Queries', '', 'flaticon-interface-8', '', [],
-                        [
-                            new AppMenuItem('ISO', 'Pages.Iso', 'flaticon-map', '/app/main/security-survey/queries/iso'),
-                            new AppMenuItem('MITRE', 'Pages.Mitre', 'flaticon-map', '/app/main/security-survey/queries/mitre'),
-                            new AppMenuItem('NIST', 'Pages.Nist', 'flaticon-map', '/app/main/security-survey/queries/nist'),
-                            new AppMenuItem('CIS-TO-ISO', 'Pages.CisToIso', 'flaticon-map', '/app/main/security-survey/queries/cis-to-iso'),
-                            new AppMenuItem('CIS-TO-MITRE', 'Pages.CisToMitre', 'flaticon-map', '/app/main/security-survey/queries/cis-to-mitre'),
-                            new AppMenuItem('CIS-TO-NIST', 'Pages.CisToNist', 'flaticon-map', '/app/main/security-survey/queries/cis-to-nist'),
-                        ]
-                    ),
-                ]
-            ),
+            new AppMenuItem('PowerBiReports', 'Pages.PowerBIReports', 'fas fa-file-contract', '/app/main/power-bi-reports'),
+            new AppMenuItem('Questions', 'Pages.Questions', 'far fa-question-circle', '/app/main/security-survey/questions'),
+            new AppMenuItem('Queries', 'Pages.Queries', 'fas fa-search', '', [], [
+                new AppMenuItem('ISO', 'Pages.Queries.Iso', 'fas fa-reply fa-xs', '/app/main/security-survey/queries/iso'),
+                new AppMenuItem('MITRE', 'Pages.Queries.Mitre', 'fas fa-reply fa-xs', '/app/main/security-survey/queries/mitre'),
+                new AppMenuItem('NIST', 'Pages.Queries.Nist', 'fas fa-reply fa-xs', '/app/main/security-survey/queries/nist'),
+                new AppMenuItem('CIS-TO-ISO', 'Pages.Queries.CisToIso', 'fas fa-reply fa-xs', '/app/main/security-survey/queries/cis-to-iso'),
+                new AppMenuItem('CIS-TO-MITRE', 'Pages.Queries.CisToMitre', 'fas fa-reply fa-xs', '/app/main/security-survey/queries/cis-to-mitre'),
+                new AppMenuItem('CIS-TO-NIST', 'Pages.Queries.CisToNist', 'fas fa-reply fa-xs', '/app/main/security-survey/queries/cis-to-nist'),
+            ]),
+            /*
+            -- Não funciona submenus nessa versão...
+            new AppMenuItem('SecuritySurvey', '', 'flaticon-app', '', [], [
+                new AppMenuItem('Questions', 'Pages.Questions', 'flaticon-map', '/app/main/security-survey/questions'),
+                new AppMenuItem('Queries', '', 'flaticon-interface-8', '', [], [
+                    new AppMenuItem('ISO', 'Pages.Iso', 'flaticon-map', '/app/main/security-survey/queries/iso'),
+                    new AppMenuItem('MITRE', 'Pages.Mitre', 'flaticon-map', '/app/main/security-survey/queries/mitre'),
+                    new AppMenuItem('NIST', 'Pages.Nist', 'flaticon-map', '/app/main/security-survey/queries/nist'),
+                    new AppMenuItem('CIS-TO-ISO', 'Pages.CisToIso', 'flaticon-map', '/app/main/security-survey/queries/cis-to-iso'),
+                    new AppMenuItem('CIS-TO-MITRE', 'Pages.CisToMitre', 'flaticon-map', '/app/main/security-survey/queries/cis-to-mitre'),
+                    new AppMenuItem('CIS-TO-NIST', 'Pages.CisToNist', 'flaticon-map', '/app/main/security-survey/queries/cis-to-nist'),
+                ]),
+            ]),
+            */
             // Big - Start heare
 
-
-            new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [],
-                [
-                    new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
-                    new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),
-                    new AppMenuItem('Users', 'Pages.Administration.Users', 'flaticon-users', '/app/admin/users'),
-                    new AppMenuItem('Languages', 'Pages.Administration.Languages', 'flaticon-tabs', '/app/admin/languages', ['/app/admin/languages/{name}/texts']),
-                    new AppMenuItem('AuditLogs', 'Pages.Administration.AuditLogs', 'flaticon-folder-1', '/app/admin/auditLogs'),
-                    new AppMenuItem('Maintenance', 'Pages.Administration.Host.Maintenance', 'flaticon-lock', '/app/admin/maintenance'),
-                    new AppMenuItem('Subscription', 'Pages.Administration.Tenant.SubscriptionManagement', 'flaticon-refresh', '/app/admin/subscription-management'),
-                    new AppMenuItem('VisualSettings', 'Pages.Administration.UiCustomization', 'flaticon-medical', '/app/admin/ui-customization'),
-                    new AppMenuItem('WebhookSubscriptions', 'Pages.Administration.WebhookSubscription', 'flaticon2-world', '/app/admin/webhook-subscriptions'),
-                    new AppMenuItem('DynamicProperties', 'Pages.Administration.DynamicProperties', 'flaticon-interface-8', '/app/admin/dynamic-property'),
-                    new AppMenuItem('Settings', 'Pages.Administration.Host.Settings', 'flaticon-settings', '/app/admin/hostSettings'),
-                    new AppMenuItem('Settings', 'Pages.Administration.Tenant.Settings', 'flaticon-settings', '/app/admin/tenantSettings'),
-                ]
-            ),
-            new AppMenuItem('DemoUiComponents', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/admin/demo-ui-components'),
+            new AppMenuItem('Administration', '', 'fas fa-users-cog', '', [], [
+                new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
+                new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),
+                new AppMenuItem('Users', 'Pages.Administration.Users', 'flaticon-users', '/app/admin/users'),
+                new AppMenuItem('Languages', 'Pages.Administration.Languages', 'flaticon-tabs', '/app/admin/languages', ['/app/admin/languages/{name}/texts']),
+                new AppMenuItem('AuditLogs', 'Pages.Administration.AuditLogs', 'flaticon-folder-1', '/app/admin/auditLogs'),
+                new AppMenuItem('Maintenance', 'Pages.Administration.Host.Maintenance', 'flaticon-lock', '/app/admin/maintenance'),
+                new AppMenuItem('Subscription', 'Pages.Administration.Tenant.SubscriptionManagement', 'flaticon-refresh', '/app/admin/subscription-management'),
+                new AppMenuItem('VisualSettings', 'Pages.Administration.UiCustomization', 'flaticon-medical', '/app/admin/ui-customization'),
+                new AppMenuItem('WebhookSubscriptions', 'Pages.Administration.WebhookSubscription', 'flaticon2-world', '/app/admin/webhook-subscriptions'),
+                new AppMenuItem('DynamicProperties', 'Pages.Administration.DynamicProperties', 'flaticon-interface-8', '/app/admin/dynamic-property'),
+                new AppMenuItem('Settings', 'Pages.Administration.Host.Settings', 'flaticon-settings', '/app/admin/hostSettings'),
+                new AppMenuItem('Settings', 'Pages.Administration.Tenant.Settings', 'flaticon-settings', '/app/admin/tenantSettings'),
+            ]),
+            //new AppMenuItem('DemoUiComponents', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/admin/demo-ui-components'),
         ]);
     }
 

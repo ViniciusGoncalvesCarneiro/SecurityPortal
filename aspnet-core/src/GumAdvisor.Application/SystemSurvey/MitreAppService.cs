@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace GumAdvisor.SystemSurvey
 {
-    [AbpAuthorize(AppPermissions.Pages_Mitre)]
+    [AbpAuthorize(AppPermissions.Pages_Queries_Mitre)]
     public class MitreAppService : GumAdvisorAppServiceBase, IMitreAppService
     {
         private readonly IRepository<Mitre, Guid> _mitreRepository;

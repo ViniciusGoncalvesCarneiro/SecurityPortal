@@ -5,7 +5,7 @@
  
             <div role="actions">
 
-                <button type="button"  *ngIf="'Pages.PowerBIReports.Create' | permission" class="btn btn-primary float-end" (click)="createPowerBIReport()"><i class="fa fa-plus btn-md-icon"></i>
+                <button type="button" *ngIf="'Pages.PowerBIReports.Create' | permission" class="btn btn-primary float-end" (click)="createPowerBIReport()"><i class="fa fa-plus btn-md-icon"></i>
                     <span class="d-none d-md-inline-block">{{ 'CreateNewPowerBIReport' | localize }}</span>
                 </button>
     
@@ -62,36 +62,43 @@
                                             <td style="min-width: 80px" [hidden]="!isGrantedAny('Pages.PowerBIReports.Edit', 'Pages.PowerBIReports.Delete')">
 
                                                 <div class="btn-group dropdown" dropdown container="body">
-                                                    <button class="dropdown-toggle btn btn-sm btn-primary" dropdownToggle><i class="fa fa-cog"></i><span class="caret"></span><!--{{ l('Actions') }}--></button>
+                                                    <button class="dropdown-toggle btn btn-sm btn-secondary" dropdownToggle>
+                                                        <i class="fas fa-ellipsis-h"></i>
+                                                        <span class="caret"></span><!--{{ l('Actions') }}--></button>
                                                     <ul class="dropdown-menu" *dropdownMenu>
 
                                                         <!-- Chamar aqui o PowerBI -->
                                                         <li>
                                                             <a 
                                                                 href="javascript:;" 
-                                                                *ngIf="permission.isGranted('Pages.PowerBIReports.Edit')" 
+                                                                *ngIf="permission.isGranted('Pages.PowerBIReports.View')"
                                                                 class="dropdown-item" [routerLink]="['/app/main/power-bi-reports/powerbireportview']"
-                                                                [queryParams]="{ id: record.powerBIReport.groupId }">
+                                                                [queryParams]="{ 
+                                                                    groupId: record.powerBIReport.groupId,
+                                                                    reportId:record.powerBIReport.reportId
+                                                                    }">
+                                                                    <i class="fas fa-chart-bar text-warning me-2"></i>
                                                                 {{ l('PowerBIReportView') }}
                                                             </a>
                                                         </li>
                                                         <!-- Chamar aqui o PowerBI -->
-
+                                                        <li><hr class="dropdown-divider" *ngIf="permission.isGranted('Pages.PowerBIReports.View')"></li>
                                                         <!--<li><a href="javascript:;" class="dropdown-item" (click)="viewAddressModal.show(record)">{{ l('View') }}</a></li>-->
                                                         <li>
                                                             <a 
                                                                 href="javascript:;" 
                                                                 *ngIf="permission.isGranted('Pages.PowerBIReports.Edit')" 
                                                                 class="dropdown-item" (click)="createOrEditPowerBIReportModal.show(record.powerBIReport.id)">
+                                                                <i class="fas fa-edit text-primary me-2"></i>
                                                                 {{ l('Edit') }}
                                                             </a>
                                                         </li>
-
                                                         <li>
                                                             <a 
                                                                 href="javascript:;"
                                                                 *ngIf="permission.isGranted('Pages.PowerBIReports.Delete')"
                                                                 class="dropdown-item" (click)="deletePowerBIReport(record.powerBIReport)">
+                                                                <i class="fas fa-trash-alt text-danger me-2"></i>
                                                                 {{ l('Delete') }}
                                                             </a>
                                                         </li>

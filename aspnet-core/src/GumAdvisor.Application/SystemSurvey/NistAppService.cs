@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace GumAdvisor.SystemSurvey
 {
-    [AbpAuthorize(AppPermissions.Pages_Nist)]
+    [AbpAuthorize(AppPermissions.Pages_Queries_Nist)]
     public class NistAppService : GumAdvisorAppServiceBase, INistAppService
     {
         private readonly IRepository<Nist, Guid> _nistRepository;

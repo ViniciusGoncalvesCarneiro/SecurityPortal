@@ -20,32 +20,32 @@ import { RouterModule } from '@angular/router';
                     {
                         path: 'security-survey/queries/cis-to-iso',
                         loadChildren: () => import('./security-survey/queries/cis-to-iso/cis-to-iso.module').then(m => m.CisToIsoModule),
-                        data: { permission: 'Pages.CisToIso' }
+                        data: { permission: 'Pages.Queries.CisToIso' }
                     },
                     {
                         path: 'security-survey/queries/cis-to-mitre',
                         loadChildren: () => import('./security-survey/queries/cis-to-mitre/cis-to-mitre.module').then(m => m.CisToMitreModule),
-                        data: { permission: 'Pages.CisToMitre' }
+                        data: { permission: 'Pages.Queries.CisToMitre' }
                     },
                     {
                         path: 'security-survey/queries/cis-to-nist',
                         loadChildren: () => import('./security-survey/queries/cis-to-nist/cis-to-nist.module').then(m => m.CisToNistModule),
-                        data: { permission: 'Pages.CisToNist' }
+                        data: { permission: 'Pages.Queries.CisToNist' }
                     },
                     {
                         path: 'security-survey/queries/iso',
                         loadChildren: () => import('./security-survey/queries/iso/iso.module').then(m => m.IsoModule),
-                        data: { permission: 'Pages.Iso' }
+                        data: { permission: 'Pages.Queries.Iso' }
                     },
                     {
                         path: 'security-survey/queries/mitre',
                         loadChildren: () => import('./security-survey/queries/mitre/mitre.module').then(m => m.MitreModule),
-                        data: { permission: 'Pages.Mitre' }
+                        data: { permission: 'Pages.Queries.Mitre' }
                     },
                     {
                         path: 'security-survey/queries/nist',
                         loadChildren: () => import('./security-survey/queries/nist/nist.module').then(m => m.NistModule),
-                        data: { permission: 'Pages.Nist' }
+                        data: { permission: 'Pages.Queries.Nist' }
                     },
                     {
                         path: 'dashboard',

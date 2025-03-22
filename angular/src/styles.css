@@ -148,13 +148,14 @@ body.swal2-height-auto {
     -webkit-animation: fa-spin 1s infinite linear;
     animation: fa-spin 1s infinite linear;
 }
+
 ngx-spinner .loading-text {
     font-weight: bold;
     color: white;
     font-size: 1.3em;
 }
 
-bs-days-calendar-view + bs-days-calendar-view {
+bs-days-calendar-view+bs-days-calendar-view {
     margin-left: 10px;
 }
 
@@ -169,3 +170,37 @@ bs-days-calendar-view {
         padding-right: 0 !important;
     }
 }
+
+
+/* Ícones Menu */
+.fa-chart-line:before {
+    content: "\f201";
+    color: red;
+}
+
+.fa-file-contract:before {
+    content: "\f56c";
+    color: darkorange;
+}
+
+.fa-question-circle:before {
+    content: "\f059";
+    color: chocolate;
+}
+
+.fa-search:before {
+    content: "\f002";
+    color: darkblue;
+}
+
+.fa-reply:before {
+    content: "\f3e5";
+    color: gray;
+}
+
+.fa-users-cog:before {
+    content: "\f509";
+    color: darkcyan;
+}
+
+/* Ícones Menu */

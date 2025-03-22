@@ -7859,15 +7859,15 @@ postcss@^8.3.7:
     picocolors "^1.0.0"
     source-map-js "^1.0.1"
 
-powerbi-client-angular@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/powerbi-client-angular/-/powerbi-client-angular-5.0.0.tgz#eaaf0481251cce816874ffbf3b4053b2f2390d42"
-  integrity sha512-e09nCM3ABiFGLGve5Wd3En3lr/0PjYvkSeczvP/NgJv+LZlXofKbUAn6n+EnH4WnCCLsQ8ct/791GHdI64/oWw==
+powerbi-client-angular@3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/powerbi-client-angular/-/powerbi-client-angular-3.0.5.tgz#ce45a34eec0b846185f31252d357b097eb17e646"
+  integrity sha512-KIgFZTWlZ6UsJ8sVhhiLzL08uDL8j+JSLwmFiryi52cfeYUJpPr7UbORnso7O34N8fJ0KFDrkauHRtg4HO2QKA==
   dependencies:
-    powerbi-client "^2.23.1"
+    powerbi-client "^2.21.1"
     tslib "^2.1.0"
 
-powerbi-client@^2.23.1:
+powerbi-client@^2.21.1:
   version "2.23.1"
   resolved "https://registry.yarnpkg.com/powerbi-client/-/powerbi-client-2.23.1.tgz#8e19177907522b5f122b1c82b0f0baca6ac98fae"
   integrity sha512-r04gDDq8YkrkZjSwOw4UBgzPwudXnA+x8B9ekVE7XDlhTDC7tujbcT15Z+iLDrx+49Bj4qVez0PgjA9CgEFpGw==

@@ -16,16 +16,26 @@
         public const string Pages_PowerBIReports_Create = "Pages.PowerBIReports.Create";
         public const string Pages_PowerBIReports_Edit = "Pages.PowerBIReports.Edit";
         public const string Pages_PowerBIReports_Delete = "Pages.PowerBIReports.Delete";
+        public const string Pages_PowerBIReports_View = "Pages.PowerBIReports.View";
 
+        // Upload
         public const string Pages_Questions = "Pages.Questions";
+        public const string Pages_Iso_Upload = "Pages.Iso.Upload";
+        public const string Pages_Mitre_Upload = "Pages.Mitre.Upload";
+        public const string Pages_Nist_Upload = "Pages.Nist.Upload";
+        public const string Pages_CisToIso_Upload = "Pages.CisToIso.Upload";
+        public const string Pages_CisToMitre_Upload = "Pages.CisToMitre.Upload";
+        public const string Pages_CisToNist_Upload = "Pages.CisToNist.Upload";
 
         // Queries
-        public const string Pages_Iso = "Pages.Iso";
-        public const string Pages_Mitre = "Pages.Mitre";
-        public const string Pages_Nist = "Pages.Nist";
-        public const string Pages_CisToIso = "Pages.CisToIso";
-        public const string Pages_CisToMitre = "Pages.CisToMitre";
-        public const string Pages_CisToNist = "Pages.CisToNist";
+        public const string Pages_Queries = "Pages.Queries";
+        public const string Pages_Queries_Iso = "Pages.Queries.Iso";
+        public const string Pages_Queries_Mitre = "Pages.Queries.Mitre";
+        public const string Pages_Queries_Nist = "Pages.Queries.Nist";
+        public const string Pages_Queries_CisToIso = "Pages.Queries.CisToIso";
+        public const string Pages_Queries_CisToMitre = "Pages.Queries.CisToMitre";
+        public const string Pages_Queries_CisToNist = "Pages.Queries.CisToNist";
+        // Big - 19/03/2025
         // ------------------------------------------------------------------------------------------
 
         public const string Pages_DemoUiComponents = "Pages.DemoUiComponents";

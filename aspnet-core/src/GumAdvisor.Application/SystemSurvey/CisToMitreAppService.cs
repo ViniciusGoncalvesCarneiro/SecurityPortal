@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace GumAdvisor.SystemSurvey
 {
-    [AbpAuthorize(AppPermissions.Pages_CisToMitre)]
+    [AbpAuthorize(AppPermissions.Pages_Queries_CisToMitre)]
     public class CisToMitreAppService : GumAdvisorAppServiceBase, ICisToMitreAppService
     {
         private readonly IRepository<CisToMitre, Guid> _cisToMitreRepository;
