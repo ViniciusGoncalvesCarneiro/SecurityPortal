@@ -14,7 +14,7 @@ namespace GumAdvisor.PowerBIReports
         Task<GetPowerBIReportForEditOutput> GetPowerBIReportForEdit(EntityDto<Guid> input);
         Task CreateOrEdit(CreateOrEditPowerBIReportDto input);
         Task Delete(EntityDto<Guid> input);
-
         Task<string> GetAccessToken();
+        Task<EmbedConfig> GetReportEmbedConfigAsync(HttpRequestMessage request, string groupId, string reportId);
     }
 }

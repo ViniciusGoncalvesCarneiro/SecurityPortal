@@ -1,10 +1,11 @@
-import { Component, Injector, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, Injector, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { BreadcrumbItem } from '@app/shared/common/sub-header/sub-header.component';
 import { PowerBIReportEmbedComponent } from 'powerbi-client-angular';
 import { IReportEmbedConfiguration, models, Report, service, Embed } from 'powerbi-client';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { PowerBIReportServiceProxy } from '@shared/service-proxies/service-proxies';
+import { environment } from 'environments/environment';
 
 @Component({
   templateUrl: './power-bi-report-view.component.html',
@@ -12,11 +13,21 @@ import { PowerBIReportServiceProxy } from '@shared/service-proxies/service-proxi
   encapsulation: ViewEncapsulation.None
 })
 
-export class PowerBiReportViewComponent extends AppComponentBase implements OnInit {
+export class PowerBiReportViewComponent extends AppComponentBase implements AfterViewInit, OnInit {
 
-  @ViewChild(PowerBIReportEmbedComponent) public reportObj!: PowerBIReportEmbedComponent;
+  @ViewChild(PowerBIReportEmbedComponent) reportObj!: PowerBIReportEmbedComponent;
 
   // Flag for button toggles
+  isEmbedded = true;
+  accessToken: string;
+  elements!: HTMLElement
+  // Overall status message of embedding
+  displayMessage = 'The report is bootstrapped. Click Embed Report button to set the access token.';
+  // CSS Class to be passed to the wrapper
+  reportClass = 'report-container2';
+  // Flag which specify the type of embedding
+  phasedEmbeddingFlag = false;
+  // Configuracion
   isFilterPaneVisible: boolean = true;
   isThemeApplied: boolean = false;
   isZoomedOut: boolean = false;
@@ -36,10 +47,10 @@ export class PowerBiReportViewComponent extends AppComponentBase implements OnIn
 
 
   // CSS Class to be passed to the wrapper
-  reportClass = 'report-container';
+  //reportClass = 'report-container';
 
   // Flag which specify the type of embedding
-  phasedEmbeddingFlag = false;
+  //phasedEmbeddingFlag = false;
 
   reportConfig: IReportEmbedConfiguration = {
     type: 'report',
@@ -80,9 +91,11 @@ export class PowerBiReportViewComponent extends AppComponentBase implements OnIn
     [
       'visualClicked', () => console.log('visual clicked')
     ],
-    [
-      'pageChanged', (event) => console.log(event)
-    ],
+    ['pageChanged', (event) => {
+      this.dimension(this.elements)
+      this.displayPowerBi1(this.elements, "block")
+
+    }],
   ]) as Map<string, (event?: service.ICustomEvent<any>, embeddedEntity?: Embed) => void | null>;
 
   breadcrumbs: BreadcrumbItem[] =
@@ -98,23 +111,50 @@ export class PowerBiReportViewComponent extends AppComponentBase implements OnIn
     super(injector);
   }
 
-  getAccessToken() {
+  ngAfterViewInit(): void {
+    const element = document.getElementsByClassName(this.reportClass);
+    if (element.length > 0) {
+      this.elements = element[0] as HTMLElement
+      this.displayPowerBi1(this.elements, "none")
+    }
+  }
 
+  displayPowerBi(elements: HTMLElement, display: "none" | "block") {
+    elements.style.display = display
+  }
+
+  displayPowerBi1(element: HTMLElement, display: "none" | "block"): HTMLElement {
+    element.style.display = display
+    return element
+  }
+  dimension(element: HTMLElement): HTMLElement {
+    element.style.height = "75vh";
+    element.style.margin = "8px auto";
+    element.style.width = "90%";
+    return element
+  }
+
+  getAccessToken() {
     this.spinnerService.show();
     this._powerBIReportsServiceProxy.getAccessToken()
       .subscribe((result) => {
-        this.reportConfig.id = '0cafa534-6e24-45e3-8ffe-ae39d98c7695';
-        this.reportConfig.embedUrl = 'https://app.powerbi.com/reportEmbed?reportId=0cafa534-6e24-45e3-8ffe-ae39d98c7695&groupId=6efe988a-2e09-4cfb-ae4c-8de4ae58d275&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLUJSQVpJTC1TT1VUSC1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldCIsImVtYmVkRmVhdHVyZXMiOnsidXNhZ2VNZXRyaWNzVk5leHQiOnRydWV9fQ%3d%3d';
-        this.reportConfig.accessToken = result;
-        this.reportConfig.settings.panes.filters.expanded = true;
-        this.reportConfig.settings.panes.filters.visible = true;
+        this.accessToken = result;
+
+        this.reportConfig = {
+          type: 'report',
+          id: environment.id,
+          embedUrl: environment.embedUrl,
+          tokenType: models.TokenType.Aad,
+          accessToken: this.accessToken,
+        };
+
+        this.spinnerService.hide();
+      }, (error) => {
+        console.error('Erro ao obter o token de acesso:', error);
         this.spinnerService.hide();
       });
-
-
-    console.log(this.reportConfig);
-
   }
+
   /**
    * Toggle zoom
   */

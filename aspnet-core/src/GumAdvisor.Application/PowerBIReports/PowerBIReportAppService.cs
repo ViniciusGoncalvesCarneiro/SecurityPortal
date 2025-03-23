@@ -141,7 +141,7 @@ namespace GumAdvisor.PowerBIReports
 
 
         #region [ - Embed PowerBI - ]
-        /*
+        
         public async Task<EmbedConfig> GetReportEmbedConfigAsync(HttpRequestMessage request, string groupId, string reportId)
         {
             var reportDetails = await GetReportDetailsAsync(groupId, reportId);
@@ -167,7 +167,6 @@ namespace GumAdvisor.PowerBIReports
 
             return reportEmbedConfig;
         }
-        */
 
         public async Task<string> GetAccessToken()
         {
@@ -195,7 +194,6 @@ namespace GumAdvisor.PowerBIReports
             }
         }
 
-        /*
         protected virtual async Task<dynamic> GetReportDetailsAsync(string groupid, string reportid)
         {
             string Token = await GetAccessToken();
@@ -220,9 +218,7 @@ namespace GumAdvisor.PowerBIReports
 
             return reportDetails;
         }
-        */
 
-        /*
         protected virtual async Task<string> GetEmbedTokenForSingleReportSingleWorkspace(string reportId, List<string> datasetIds, string groupId)
         {
             var client = new HttpClient();
@@ -245,7 +241,6 @@ namespace GumAdvisor.PowerBIReports
 
             return responseBody;
         }
-        */
         #endregion
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GumAdvisor.PowerBIReports
+﻿using System.Collections.Generic;
+
+namespace GumAdvisor.PowerBIReports
 {
     public class PowerBIReportConsts
     {
@@ -23,5 +25,30 @@
         public static string password = "Nof03560";
         #endregion
 
+    }
+
+    public class EmbedConfig
+    {
+        public List<PowerBiReportDetails> ReportsDetail { get; set; }
+        public string EmbedToken { get; set; }
+
+        public EmbedConfig()
+        {
+            ReportsDetail = new List<PowerBiReportDetails>();
+        }
+    }
+
+    public class PowerBiReportDetails
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string EmbedUrl { get; set; }
+
+        public PowerBiReportDetails(string id, string name, string embedUrl)
+        {
+            Id = id;
+            Name = name;
+            EmbedUrl = embedUrl;
+        }
     }
 }

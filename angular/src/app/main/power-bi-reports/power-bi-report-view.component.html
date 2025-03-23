@@ -1,7 +1,7 @@
 <div [@routerTransition]>
     <div class="content d-flex flex-column flex-column-fluid">
 
-        <sub-header [title]="'PowerBiReportView' | localize" [description]="'PowerBiReportViewHeaderInfo' | localize" [breadcrumbs]="breadcrumbs">
+         <sub-header [title]="'PowerBiReportView' | localize" [description]="'PowerBiReportViewHeaderInfo' | localize" [breadcrumbs]="breadcrumbs">
 
             <div role="actions">
 
@@ -18,7 +18,7 @@
                         <i class="fas fa-file-contract btn-md-icon"></i>
                         <span class="d-none d-md-inline-block">{{ 'PowerBIReportSettings' | localize }}</span>
                     </button>
-
+                    
                     <ul 
                         id="dropdownMenuPowerBISettings" 
                         class="dropdown-menu dropdown-menu-right" 
@@ -28,8 +28,8 @@
                         
                         <li role="menuitem"><a href="javascript:;"><i class="fas fa-filter text-primary me-3"></i>{{filterPaneBtnText}}</a></li>
                         <li role="menuitem"><a href="javascript:;"><i class="far fa-images text-warning me-3"></i>{{themeBtnText}}</a></li>
-                        <!--<li role="menuitem"><a href="javascript:;">{{dataSelectedBtnText}}</a></li>-->
-                        <li role="menuitem"><a href="javascript:;" (click)="toggleZoom()"><i class="fas fa-search-plus text-info me-3"></i>{{zoomBtnText}}</a></li>
+                        <li role="menuitem"><a href="javascript:;">{{dataSelectedBtnText}}</a></li>
+                        <!-- <li role="menuitem"><a href="javascript:;" (click)="toggleZoom()"><i class="fas fa-search-plus text-info me-3"></i>{{zoomBtnText}}</a></li> -->
                         <li role="menuitem"><a href="javascript:;" (click)="refreshReport()"><i class="fas fa-sync text-success me-3"></i>Refresh report</a></li>
                         <li role="menuitem"><a href="javascript:;" (click)="enableFullScreen()"><i class="fas fa-expand text-dark me-3"></i>Full screen</a></li>
                     </ul>
@@ -37,7 +37,7 @@
 
             </div>
 
-        </sub-header>
+        </sub-header> 
 
         <div [class]="containerClass">
             <div class="card card-custom gutter-b">
@@ -45,15 +45,20 @@
 
                     <div class="row align-items-center">
 
-                        <!--<PowerBI - Component-Start>-->
-                        <powerbi-report
-                            [embedConfig]="reportConfig" 
-                            [cssClassName]="reportClass" 
-                            [phasedEmbedding]="phasedEmbeddingFlag" 
-                            [eventHandlers]="eventHandlersMap">
-                        </powerbi-report>
-                        <!--<PowerBI - Component-End>-->
-
+                        <div class="container">
+                          
+                            <div class="controls">
+                              <ng-container *ngIf="isEmbedded">
+                                <powerbi-report
+                                  #powerbiReport
+                                  [embedConfig]="reportConfig"
+                                  [cssClassName]="reportClass"
+                                  [phasedEmbedding]="phasedEmbeddingFlag"
+                                  [eventHandlers]="eventHandlersMap"
+                                >
+                                </powerbi-report>
+                              </ng-container>
+                            </div>
                     </div>
                 </div>
             </div>
